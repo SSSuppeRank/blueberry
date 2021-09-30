@@ -42,13 +42,13 @@
                 <li class="nav-item">
                 <a class="nav-link" href="feedback.php">Feedback</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link active" href="admin.php">Admin</a>
+                </li>
             </ul>
-            <form class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SignUp">
-                    Sign up
-                </button>
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#LogIn">
-                    Log in
+            <form class="d-flex" action="script/logOut.php"> 
+                <button type="submit" class="btn btn-outline-dark">
+                    Log out
                 </button>
             </form>
             </div>

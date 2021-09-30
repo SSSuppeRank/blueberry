@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="../blueberry/script/logIn.php" method="POST">
                     <div class="mb-3">
                         <label for="userEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="userEmail">
@@ -16,10 +16,10 @@
                         <label for="userPass" class="form-label">Password</label>
                         <input type="password" class="form-control" name="userPass">
                     </div>
-                    <div class="mb-3 form-check">
+                    <!-- <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
+                    </div> -->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-outline-dark">Submit</button>
                     </div>
