@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="css/style.css">
     <title>Document</title>
+    <?php
+        session_start();
+    ?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,14 +29,34 @@
                 <li class="nav-item">
                 <a class="nav-link active" href="feedback.php">Feedback</a>
                 </li>
+                <?php
+                    if( isset( $_SESSION['admin'] ) && $_SESSION['admin'] == true ) {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="admin.php">Admin</a>';
+                        echo '</li>';
+                    }
+                ?>
             </ul>
-            <form class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SignUp">
-                    Sign up
-                </button>
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#LogIn">
-                    Log in
-                </button>
+            <form class="d-flex" action="script/logOut.php">
+                <?php
+                    if( isset( $_SESSION['inSystem'] ) && $_SESSION['inSystem'] == true ) {
+                        // echo '<form class="d-flex" >';
+                        echo '<div class="display-6">';
+                        echo $_SESSION['userName'];
+                        echo '</div>';
+                        echo '<button type="submit" class="btn btn-outline-dark">';
+                        echo 'Log out';
+                        echo '</button>';
+                        // echo '</form>'; 
+                    } else {
+                        echo '<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SignUp">';
+                        echo 'Sign up';
+                        echo '</button>';
+                        echo '<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#LogIn">';
+                        echo 'Log in';
+                        echo '</button>';
+                    }
+                ?>
             </form>
             </div>
         </div>

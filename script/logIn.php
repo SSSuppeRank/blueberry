@@ -15,11 +15,17 @@
     $count = 0;
         
     while( $row = mysqli_fetch_array( $result ) ) {
-        if( $row['useremail'] == $userEmail && $row['userpassword'] == $userPass ) {
+        if( $userEmail == "kamila@master.com" && $userPass == "bakisheva" ) {
+            $_SESSION['admin'] = true;
+            $_SESSION['inSystem'] = true;
+            // $_SESSION['userName'] = $row['username'];
             header( 'Location: ../admin.php' );
-            echo 'success';
-            $_SESSION['userID'] = $row['userID'];
             $count++;
+        } else if( $row['useremail'] == $userEmail && $row['userpassword'] == $userPass ) {
+            $_SESSION['userID'] = $row['userID'];
+            $_SESSION['inSystem'] = true;
+            $_SESSION['userName'] = $row['username'];
+            header( 'Location: ../makeOrder.php' );
         }
     }
 

@@ -1,10 +1,11 @@
 <table class="table mt-5">
     <thead>
         <tr>
-          <th scope="col"></th>
+          <th scope="col">bag id</th>
           <th scope="col">Print</th>
           <th scope="col">Size</th>
           <th scope="col">Price</th>
+          <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -32,9 +33,16 @@
                 $count++;
                 echo '<tr>';
                 echo '<th scope="row">' . $count . '</th>';
-                echo '<td>' . $row['print'] . '</td>';
+                echo '<td><img src="' . $row['print'] . '" width=220><span class="display-5">' . $row['printName'] . '</span></td>';
                 echo '<td>' . $row['size'] . '</td>';
                 echo '<td>' . $row['price'] . 'тг</td>';
+
+                echo '<form action="../blueberry/script/setBagID.php" method="POST">';
+                echo '<td>';
+                echo '<button type="submit" value="' . $row['bagID'] . '" name="bagID" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#order">Buy</a>';
+                echo '</td>';
+                echo '</form>';
+
                 echo '</tr>';
             }
         ?>

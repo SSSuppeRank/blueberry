@@ -25,7 +25,7 @@
             unset( $_SESSION['registered'] );
         }
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Blueberry shoppers</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,14 +42,35 @@
                 <li class="nav-item">
                 <a class="nav-link" href="feedback.php">Feedback</a>
                 </li>
+                <?php
+                    if( isset( $_SESSION['admin'] ) && $_SESSION['admin'] == true ) {
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="admin.php">Admin</a>';
+                        echo '</li>';
+                    }
+                ?>
             </ul>
-            <form class="d-flex">
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SignUp">
-                    Sign up
-                </button>
-                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#LogIn">
-                    Log in
-                </button>
+            <form class="d-flex" action="script/logOut.php">
+                <?php
+                    // session_start();
+                    if( isset( $_SESSION['inSystem'] ) && $_SESSION['inSystem'] == true ) {
+                        // echo '<form class="d-flex" >';
+                        echo '<div class="display-6">';
+                        echo $_SESSION['userName'];
+                        echo '</div>';
+                        echo '<button type="submit" class="btn btn-outline-dark">';
+                        echo 'Log out';
+                        echo '</button>';
+                        // echo '</form>'; 
+                    } else {
+                        echo '<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SignUp">';
+                        echo 'Sign up';
+                        echo '</button>';
+                        echo '<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#LogIn">';
+                        echo 'Log in';
+                        echo '</button>';
+                    }
+                ?>
             </form>
             </div>
         </div>
