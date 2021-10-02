@@ -1,9 +1,6 @@
 <?php
     session_start();
     require_once( 'database.php' );
-
-    $link = mysqli_connect( $host, $user, $password, $dataBase )
-        or die( "Error: " . mysqli_error( $link ) );
     
     $userName = $_POST['userName'];
     $userEmail = $_POST['userEmail'];
@@ -19,4 +16,6 @@
         $_SESSION['registered'] = false;
         header( 'Location: ../index.php' );
     }
+
+    mysqli_close( $link );
 ?>

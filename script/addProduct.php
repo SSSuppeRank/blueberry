@@ -2,9 +2,6 @@
     session_start();
     require_once( 'database.php' );
 
-    $link = mysqli_connect( $host, $user, $password, $dataBase )
-        or die( "Error: " . mysqli_error( $link ) );
-    
     $print = $_POST['print'];
     $size = $_POST['size'];
     $price = $_POST['price'];
@@ -15,4 +12,5 @@
         or die( "Error: " . mysqli_error( $link ) );
 
     header( 'Location: ../makeOrder.php' );
+    mysqli_close( $link );
 ?>

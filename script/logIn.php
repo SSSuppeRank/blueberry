@@ -1,9 +1,6 @@
 <?php
     session_start();
     require_once( 'database.php' );
-
-    $link = mysqli_connect( $host, $user, $password, $dataBase )
-        or die( "Error: " . mysqli_error( $link ) );
     
     $userEmail = $_POST['userEmail'];
     $userPass = $_POST['userPass'];
@@ -18,7 +15,7 @@
         if( $userEmail == "kamila@master.com" && $userPass == "bakisheva" ) {
             $_SESSION['admin'] = true;
             $_SESSION['inSystem'] = true;
-            // $_SESSION['userName'] = $row['username'];
+            $_SESSION['userName'] = "kamila@master.com";
             header( 'Location: ../admin.php' );
             $count++;
         } else if( $row['useremail'] == $userEmail && $row['userpassword'] == $userPass ) {
@@ -32,4 +29,6 @@
     if( $count == 0 ) {
         header( 'Location: ../index.php' );
     }
+
+    mysqli_close( $link );
 ?>

@@ -2,9 +2,6 @@
     session_start();
     require_once( 'database.php' );
 
-    $link = mysqli_connect( $host, $user, $password, $dataBase )
-        or die( "Error: " . mysqli_error( $link ) );
-    
     $address = $_POST['address'];
     $userID = $_SESSION['userID'];
     $bagID = $_SESSION['bagID'];
@@ -16,4 +13,6 @@
     $_SESSION['successOrder'] = true;
 
     header( 'Location: ../makeOrder.php' );
+
+    mysqli_close( $link );
 ?>

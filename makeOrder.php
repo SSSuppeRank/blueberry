@@ -77,10 +77,6 @@
         </div>
     </nav>
 
-    <?php
-        // require_once( 'modals/buy.php' );
-    ?>
-
     <!-- order table -->
     <?php
         require_once( 'content/orderTable.php' );

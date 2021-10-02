@@ -9,6 +9,20 @@
     <title>Document</title>
     <?php
         session_start();
+
+        if( isset( $_SESSION['feedbackFail'] ) && $_SESSION['feedbackFail'] == true ) {
+            echo '<script>';
+            echo 'alert("You are not registered in the system");';
+            echo '</script>';
+            
+            unset( $_SESSION['feedbackFail'] );
+        } else if( isset( $_SESSION['feedbackFail'] ) && $_SESSION['feedbackFail'] == false ) {
+            echo '<script>';
+            echo 'alert("Success!");';
+            echo '</script>';
+
+            unset( $_SESSION['feedbackFail'] );
+        }
     ?>
 </head>
 <body>
@@ -62,8 +76,21 @@
         </div>
     </nav>
 
-    <div class="text-center">
-        <h1>Our clients feedback</h1>
+    <div class="mt-5">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <form action="script/feedback.php" class="mb-5 form-control" method="POST">
+                    <label for="feedbackForm"><h1>Leave a feedback</h1></label>
+                    <textarea placeholder="..." id="" class="form-control mb-3" rows="5" name="feedbackForm"></textarea>
+                    <button type="submit" class="btn btn-outline-primary form-control">Send</button>
+                </form>
+                <?php
+                    require_once( 'script/outputFeedbacks.php' );
+                ?>
+            </div>
+            <div class="col-3"></div>
+        </div>
     </div>
     
     <!-- modals -->

@@ -45,6 +45,9 @@
                     // session_start();
                     if( isset( $_SESSION['inSystem'] ) && $_SESSION['inSystem'] == true ) {
                         // echo '<form class="d-flex" >';
+                        echo '<div class="display-6">';
+                        echo $_SESSION['userName'];
+                        echo '</div>';
                         echo '<button type="submit" class="btn btn-outline-dark">';
                         echo 'Log out';
                         echo '</button>';
@@ -70,6 +73,9 @@
                 <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addProduct">
                     Add new product
                 </button>
+                <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#seeOrders">
+                    See all orders
+                </button>
             </div>
             <div class="col03"></div>
         </div>
@@ -77,6 +83,7 @@
     
     <!-- modals -->
     <?php
+        require_once( 'modals/seeOrders.php' );
         require_once( 'modals/addNewProductModal.php' );
         require_once( 'modals/logInModal.php' );
         require_once( 'modals/signUpModal.php' );
